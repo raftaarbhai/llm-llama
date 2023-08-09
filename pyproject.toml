@@ -1,0 +1,6 @@
+[project]
+name = "llm-llama"
+version = "0.1"
+
+[project.entry-points.llm]
+llama = "llm_llama"
