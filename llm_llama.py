@@ -5,15 +5,20 @@ import random
 def register_models(register):
     register(Llama())
 
-def build_llama_table(text):
-    words = text.split()
-    transitions = {}
-    # Loop through all but the last word
-    for i in range(len(words) - 1):
-        word = words[i]
-        next_word = words[i + 1]
-        transitions.setdefault(word, []).append(next_word)
-    return transitions
+@llm.hookimpl
+def register_commands(cli):
+    @cli.group(name="llama")
+    def llama_():
+        "Commands for working with llama"
+
+    @mpt30b_.command()
+    def download():
+        "Download the <size>GB LLama-30B model file"
+	# TODO: Replace with download for Llama file and appropriate warning about non-commercial use
+        #hf_hub_download(
+        #    repo_id="TheBloke/mpt-30B-chat-GGML",
+        #    filename="mpt-30b-chat.ggmlv0.q4_1.bin",
+        #)
 
 def generate(transitions, length, start_word=None):
     all_words = list(transitions.keys())
@@ -25,6 +30,8 @@ def generate(transitions, length, start_word=None):
 
 class Llama(llm.Model):
     model_id = "llama"
+    class Options(llm.Options):
+        technique: str = None
 
     def execute(self, prompt, stream, response, conversation):
         text = prompt.prompt
