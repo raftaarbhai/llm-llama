@@ -4,7 +4,7 @@
 
 Plugin for [LLM](https://llm.datasette.io/) adding support for the Llama2 language model.
 
-This plugin uses [TheBloke/mpt-30B-GGML](https://huggingface.co/TheBloke/mpt-30B-GGML). The code was inspired by [abacaj/mpt-30B-inference](https://github.com/abacaj/mpt-30B-inference).
+This plugin uses Llama2. The code was inspired by [abacaj/mpt-30B-inference](https://github.com/abacaj/mpt-30B-inference) and llm-mpt30b.
 
 ## Installation
 
