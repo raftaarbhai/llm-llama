@@ -22,7 +22,6 @@ def register_commands(cli):
     @llama_.command()
     def download():
         "Download the <size>GB LLama-30B model file"
-	# TODO: Replace with download for Llama file and appropriate warning about non-commercial use
         hf_hub_download(
             repo_id="TheBloke/Llama-2-7B-GGML",
             filename="llama-2-7b.ggmlv3.q2_K.bin",
@@ -94,7 +93,7 @@ class Llama(llm.Model):
                     modifier = 1.0
                 current_tokens = tokenizer.tokenize(word)
                 if add_space and current_tokens:
-                    tokens.append('Ġ')  # Space token for GPT-2
+                    tokens.append(' ')  # Space token
                     attention_modifiers.append(1.0)
                 tokens.extend(current_tokens)
                 attention_modifiers.extend([modifier] * len(current_tokens))
